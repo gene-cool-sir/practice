@@ -3,7 +3,8 @@ logs/**/info.log
 logs/**/warn.log
 /cloud-api-gateway/logs
 .idea
-.idea/**
+.idea/*.xml
+.idea/jarRepositories.xml
 *.iml
 code-maker
 /logs
