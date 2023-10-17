@@ -8,6 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="algorithm-model" />
         <module name="design-model" />
+        <module name="voice-tts" />
+        <module name="grpc-service" />
         <module name="practice-javase" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
@@ -23,7 +25,9 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="algorithm-model" options="-parameters" />
       <module name="design-model" options="-parameters" />
+      <module name="grpc-service" options="-parameters" />
       <module name="practice-javase" options="-parameters" />
+      <module name="voice-tts" options="-parameters" />
     </option>
   </component>
 </project>

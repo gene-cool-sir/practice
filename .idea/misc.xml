@@ -10,6 +10,8 @@
         <option value="$PROJECT_DIR$/design-model/pom.xml" />
         <option value="$PROJECT_DIR$/algorithm-model/pom.xml" />
         <option value="$PROJECT_DIR$/practice-javase/pom.xml" />
+        <option value="$PROJECT_DIR$/grpc-service/pom.xml" />
+        <option value="$PROJECT_DIR$/voice-tts/pom.xml" />
       </list>
     </option>
   </component>

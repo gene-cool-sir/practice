@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+/**
+ * Service to check STTAuthorization and get username
+ */
+
+option java_multiple_files = true;
+
+package com.sportstracker.apiserver.grpc;
+
+message UsernameAuthRequest{
+    string STTAuthorization = 1;
+}
+
+message UsernameAuthResponse{
+    bool authenticated = 1;
+    string username = 2;
+}
+
+service AuthService {
+    rpc getUsername(UsernameAuthRequest) returns (UsernameAuthResponse) {};
+}
