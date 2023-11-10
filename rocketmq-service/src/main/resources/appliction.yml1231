@@ -1,0 +1,56 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: rocketmq-service
+
+rocketmq:
+  # 多个NameServer，host:port;host:port，RocketMQProperties
+  name-server: 192.168.100.100:9876
+  # 默认配置的生产组,RocketMQTemplate对应的Producer配置,当然也可以使用mq集成的注解类的方式进行定义
+  producer:
+    # 多个Producer如果属于一个应用，发送同样的消息，则应该将它们归为同一组
+    group: default_producer_group
+    # 发送消息失败重试次数，默认2
+    retryTimesWhenSendFailed: 2
+    # 异步消息重试此处，默认2
+    retryTimesWhenSendAsyncFailed: 2
+    # 发送消息超时时间，默认3000
+    sendMessageTimeout: 3000
+    # 消息最大长度，默认1024 * 1024 * 4(默认4M)
+    maxMessageSize: 4096
+    # 压缩消息阈值，默认4k(1024 * 4)
+    compressMessageBodyThreshold: 4096
+    # 是否在内部发送失败时重试另一个broker，默认false
+    retryNextServer: false
+    # access-key
+    #accessKey: xxx
+    # secret-key
+    #secretKey: xxx
+    # 是否启用消息跟踪，默认false
+    enableMsgTrace: false
+    # 消息跟踪主题的名称值。如果不进行配置，可以使用默认的跟踪主题名称
+    customizedTraceTopic: RMQ_SYS_TRACE_TOPIC
+
+  # 默认配置的生产组,RocketMQTemplate对应的Consumer配置,多个消费者组,可使用mq集成的注解类配置其他监听消费
+  consumer:
+    # 配置指定group是否启动监听器 group1.topic1 = false;
+    listeners:
+      # key：group名称
+      rocketmq_source_code_group:
+        # value：{key: topic名称: value: true/false}
+        rocketmq_source_code: true
+    # 指定消费组
+    group: default_consumer_group
+    # 指定topic，启动时就会注册,
+    #topic: default_consumer_xxx
+    # 一次拉取消息最大值，注意是拉取消息的最大值而非消费最大值, 默认30条
+    pull-batch-size: 30
+    # 其他配置参考属性类
+
+# 日志配置
+#logging:
+#  config: classpath:logback.xml
+#  level:
+#    org.apache.rocketmq: error
+#    RocketmqClient: error

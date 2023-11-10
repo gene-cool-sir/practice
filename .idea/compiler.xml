@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="algorithm-model" />
-        <module name="design-model" />
-        <module name="voice-tts" />
         <module name="grpc-service" />
         <module name="practice-javase" />
+        <module name="design-model" />
+        <module name="voice-tts" />
+        <module name="rocketmq-service" />
+        <module name="rocketmq-api" />
       </profile>
       <profile name="Gradle Imported" enabled="true">
         <outputRelativeToContentRoot value="true" />
@@ -27,6 +29,7 @@
       <module name="design-model" options="-parameters" />
       <module name="grpc-service" options="-parameters" />
       <module name="practice-javase" options="-parameters" />
+      <module name="rocketmq-service" options="-parameters" />
       <module name="voice-tts" options="-parameters" />
     </option>
   </component>

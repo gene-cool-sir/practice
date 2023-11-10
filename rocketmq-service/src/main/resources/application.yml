@@ -1,0 +1,4 @@
+rocketmq:
+  name-server: 192.168.100.100:9876
+  producer:
+    group: default_producer_group
