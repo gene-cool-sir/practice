@@ -51,11 +51,21 @@ public abstract class BaseMqMessage<T> implements Serializable {
     private String traceId = UUID.randomUUID().toString();
 
     /**
+     * 记录重试次数，用于判断重试次数，超过重试次数发送异常警告
+     */
+    protected Integer retryTimes = 0;
+
+    /**
+     * 配置默认org.springframework.messaging.Message的MessageHeaders属性
+     */
+    private Map<String,Object> headers;
+
+    /**
      * 预设值一些属性
      * @return
      */
 
-    public MessageHeaders getHeaders() {
+    public Map<String,Object> getHeaders() {
         Map<String, Object> headers = new HashMap<>();
         if (StringUtils.isNotBlank(key)) {
             headers.put(RocketMQUtil.toRocketHeaderKey(RocketMQHeaders.KEYS), key);
@@ -66,7 +76,7 @@ public abstract class BaseMqMessage<T> implements Serializable {
         if (StringUtils.isNotBlank(tags)) {
             headers.put(RocketMQUtil.toRocketHeaderKey(RocketMQHeaders.TAGS), tags);
         }
-        return new MessageHeaders(headers);
+        return headers;
     }
 
 }

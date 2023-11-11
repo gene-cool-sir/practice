@@ -3,6 +3,7 @@ package com.study.rocketmq.servicebus;
 import com.study.rocketmq.domain.BaseMqMessage;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.rocketmq.spring.support.RocketMQHeaders;
 import org.apache.rocketmq.spring.support.RocketMQUtil;
@@ -21,7 +22,8 @@ import java.util.Objects;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ServiceBusMessage extends BaseMqMessage<String>{
+@NoArgsConstructor
+public class ServiceBusMessage extends BaseMqMessage<String> implements Serializable{
     private static final long serialVersionUID = 1L;
     private String content;
     private String contentType;
@@ -39,7 +41,7 @@ public class ServiceBusMessage extends BaseMqMessage<String>{
     }
 
     @Override
-    public MessageHeaders getHeaders() {
+    public Map<String,Object> getHeaders() {
          return super.getHeaders();
     }
 }
