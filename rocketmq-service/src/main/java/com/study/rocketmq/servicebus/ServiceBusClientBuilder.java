@@ -1,11 +1,11 @@
-/*
 package com.study.rocketmq.servicebus;
 
-*/
+
+import com.study.rocketmq.template.DefaultRocketMQTemplate;
+
 /**
  * Created by gene
- *//*
-
+ */
 public class ServiceBusClientBuilder {
 
     public ServiceBusClientBuilder() {
@@ -22,32 +22,44 @@ public class ServiceBusClientBuilder {
     }
 
     public final class ServiceBusSenderClientBuilder {
-        private String queueName;
-        private String topicName;
+
+        private String tag;
+
+        private String topic;
+
+        private String destination;
 
         private ServiceBusSenderClientBuilder() {
         }
 
-        public ServiceBusSenderClientBuilder queueName(String queueName) {
-            this.queueName = queueName;
+        public ServiceBusSenderClientBuilder queueName(String destination) {
+            this.destination = destination;
             return this;
         }
 
-        public ServiceBusSenderClientBuilder topicName(String topicName) {
-            this.topicName = topicName;
+        public ServiceBusSenderClientBuilder destination(String topic, String tag) {
+            this.destination = DefaultRocketMQTemplate.buildDestination(topic, tag);
+            return this;
+        }
+
+        public ServiceBusSenderClientBuilder topicName(String topic, String tag) {
+            this.topic = topic;
+            this.tag = tag;
+            this.destination = DefaultRocketMQTemplate.buildDestination(topic, tag);
+
             return this;
         }
 
 
         public ServiceBusSenderAsyncClient buildAsyncClient() {
 
-            return new ServiceBusSenderAsyncClient(queueName);
+            return new ServiceBusSenderAsyncClient(destination);
+
         }
 
         public ServiceBusSenderClient buildClient() {
-            return new ServiceBusSenderClient(queueName);
+            return new ServiceBusSenderClient(destination);
         }
     }
 
 }
-*/

@@ -35,7 +35,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Slf4j
 @Component
-@RocketMQTransactionListener(rocketMQTemplateBeanName ="defaultRocketMQTemplate")
+@RocketMQTransactionListener(rocketMQTemplateBeanName ="rocketMQTemplate")
 public class DefaultRocketMQTransactionListener implements RocketMQLocalTransactionListener {
 
     private AtomicInteger transactionIndex = new AtomicInteger(0);

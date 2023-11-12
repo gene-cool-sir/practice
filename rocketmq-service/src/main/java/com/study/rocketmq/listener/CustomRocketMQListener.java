@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RocketMQMessageListener(
         topic = RocketMqBizConstant.SERVICE_BUS_TEST_TOPIC,
-        consumerGroup = RocketMqBizConstant.SERVICE_BUS_TEST_CONSUME_GROUP,
+        consumerGroup = RocketMqBizConstant.SERVICE_BUS_TEST_CONSUME_GROUP_BASE_MESSAGE,
         selectorExpression = RocketMqBizConstant.SERVICE_BUS_CONSUME_TAG,
         consumeMode = ConsumeMode.CONCURRENTLY,
         messageModel = MessageModel.CLUSTERING,

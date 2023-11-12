@@ -41,9 +41,9 @@ public abstract class BaseMqMessage<T> implements Serializable {
     private String source = "";
 
     /**
-     * 发送时间
+     * 发送时间, 注意需要配置时间转换支持
      */
-    private LocalDateTime sendTime = LocalDateTime.now();
+    // private LocalDateTime sendTime = LocalDateTime.now();
 
     /**
      * 跟踪id，用于slf4j等日志记录跟踪id，方便查询业务链
