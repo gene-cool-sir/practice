@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.client.producer.TransactionSendResult;
 import org.apache.rocketmq.spring.core.RocketMQTemplate;
-import org.apache.rocketmq.spring.support.RocketMQHeaders;
 import org.apache.rocketmq.spring.support.RocketMQUtil;
 import org.springframework.lang.Nullable;
 import org.springframework.messaging.Message;
@@ -22,7 +21,9 @@ import org.springframework.util.MimeTypeUtils;
 
 import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by gene
@@ -51,21 +52,9 @@ public class DefaultRocketMQTemplate extends AbstractMessageSendingTemplate<Stri
     }
 
     /**
-     * 分隔符
-     */
-    public static final String DELIMITER = ":";
-
-    /**
-     * 构建目的地
-     */
-    public static String buildDestination(String topic, String tag) {
-        return topic + DELIMITER + tag;
-    }
-
-    /**
      * 发送同步消息
      */
-    public <T extends BaseMqMessage> SendResult send(String destination,
+    public <T extends BaseMqMessage> SendResult syncSend(String destination,
                                                      Object payload,
                                                      Map<String, Object> headers) {
         Message<?> sendMessage = this.doConvertSpringMsg(payload, headers, null);
@@ -77,7 +66,7 @@ public class DefaultRocketMQTemplate extends AbstractMessageSendingTemplate<Stri
         return sendResult;
     }
 
-    public <T extends BaseMqMessage> SendResult send(String destination,
+    public <T extends BaseMqMessage> SendResult syncSend(String destination,
                                                      T message,
                                                      MessageHeaders messageHeaders) {
 

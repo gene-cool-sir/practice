@@ -63,7 +63,7 @@ public class DemoProducersController {
             dabiWorkoutQueueClient = new ServiceBusClientBuilder()
                     .connectionString("")
                     .sender()
-                    .queueName("test_group_topic")
+                    .queueName(serviceBusMessage.getTopic()+":" + serviceBusMessage.getTags())
                     .buildAsyncClient();
         }
 

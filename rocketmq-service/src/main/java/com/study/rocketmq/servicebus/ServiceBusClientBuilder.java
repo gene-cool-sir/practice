@@ -1,7 +1,7 @@
 package com.study.rocketmq.servicebus;
 
 
-import com.study.rocketmq.template.DefaultRocketMQTemplate;
+import com.study.rocketmq.domain.RocketMqBizConstant;
 
 /**
  * Created by gene
@@ -38,14 +38,14 @@ public class ServiceBusClientBuilder {
         }
 
         public ServiceBusSenderClientBuilder destination(String topic, String tag) {
-            this.destination = DefaultRocketMQTemplate.buildDestination(topic, tag);
+            this.destination = RocketMqBizConstant.buildDestination(topic, tag);
             return this;
         }
 
         public ServiceBusSenderClientBuilder topicName(String topic, String tag) {
             this.topic = topic;
             this.tag = tag;
-            this.destination = DefaultRocketMQTemplate.buildDestination(topic, tag);
+            this.destination = RocketMqBizConstant.buildDestination(topic, tag);
 
             return this;
         }

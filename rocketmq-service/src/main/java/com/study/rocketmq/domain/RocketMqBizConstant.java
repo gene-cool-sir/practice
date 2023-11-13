@@ -30,5 +30,16 @@ public class RocketMqBizConstant {
 
 
 
+    /**
+     * 分隔符
+     */
+    public static final String DELIMITER = ":";
+
+    /**
+     * 构建目的地
+     */
+    public static String buildDestination(String topic, String tag) {
+        return topic + DELIMITER + tag;
+    }
 
 }
